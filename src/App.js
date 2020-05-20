@@ -15,7 +15,15 @@ function App() {
   }, [])
 
   async function handleAddRepository() {
-    // TODO
+    const response = await api.post('/repositories', {
+      title: `Repo actual ${Date.now()}`,
+	    url: "https://github.com/niltonpedro/git-finder",
+	    techs: ["Reactjs", "express", "github"]
+    })
+
+    const repo = response.data;
+
+    setNewRepositorie([...repositories, repo])
   }
 
   async function handleRemoveRepository(id) {
@@ -41,8 +49,3 @@ function App() {
 }
 
 export default App;
-
-{/* <li>
-    Repositório 1
-    
- </li> */}
